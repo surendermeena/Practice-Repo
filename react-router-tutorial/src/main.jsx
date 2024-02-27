@@ -4,8 +4,12 @@ import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Root from './routes/root'
 import ErrorPage from './error-page'
-import Contact from "./routes/contact"
-import { loader as rootLoader } from "./routes/root";
+import Contact, { loader as contactLoader } from "./routes/contact"
+import {
+  loader as rootLoader,
+  action as rootAction
+} from "./routes/root";
+import EditContact from "./routes/edit";
 
 const route = createBrowserRouter([
   {
@@ -15,12 +19,19 @@ const route = createBrowserRouter([
     // When Error will occur in React APP it will render this ErrorPage
     errorElement: <ErrorPage />,
     loader: rootLoader,
+    action: rootAction,
     children: [
 
       {
         path: "contacts/:contactId",
-        element: <Contact />
+        element: <Contact />,
+        loader: contactLoader
       },
+      {
+        path: "/contacts/:contactId/edit",
+        element: <EditContact />,
+        loader: contactLoader
+      }
     ]
   },
 ])
