@@ -8,15 +8,16 @@ const userSlice = createSlice({
       state.push(action.payload);
     },
     removeUser(state, action) {
-      console.log(`Hello item Delete ${action.payload}`);
+      // console.log(`Hello item Delete ${action.payload}`);
       state.splice(action.payload, 1);
     },
     deleteUsers(state, action) {
-      console.log("log deleted");
+      // console.log("log deleted");
       return [];
     },
   },
 });
+
 
 export const { addUser, removeUser, deleteUsers } = userSlice.actions;
 export default userSlice.reducer;
