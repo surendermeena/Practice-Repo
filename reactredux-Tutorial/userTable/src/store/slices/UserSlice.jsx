@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, isAction } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
   name: "user",
@@ -7,8 +7,14 @@ const userSlice = createSlice({
     addUser(state, action) {
       state.push(action.payload);
     },
-    removeuser(state, action) {},
-    deleteUsers(state, action) {},
+    removeUser(state, action) {
+      console.log(`Hello item Delete ${action.payload}`);
+      state.splice(action.payload, 1);
+    },
+    deleteUsers(state, action) {
+      console.log("log deleted");
+      return [];
+    },
   },
 });
 
